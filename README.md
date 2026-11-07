@@ -26,12 +26,16 @@ branch name:
 loadstring(game:HttpGet("https://raw.githubusercontent.com/vornecc-pixel/Testing/arena/bc2a72bc-testing/ESP.lua"))()
 ```
 
-**Option B — the loader script** (tries the pinned commit first, falls back to
-the branch, and rejects 404 pages instead of trying to run them):
+**Option B — the loader script** (recommended if Option A is misbehaving):
 
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/vornecc-pixel/Testing/e834f10ad75ce60393a5bbe69cf62f5a180f4bfb/loader.lua"))()
 ```
+
+The loader tries the pinned commit, the branch head, and a jsDelivr mirror in
+that order, and reports exactly what each one did instead of failing silently —
+it detects a missing HTTP API, `HttpEnabled = false`, empty responses, HTTP error
+statuses, and HTML-instead-of-Lua. If it can't fetch, paste `ESP.lua` directly.
 
 **Option C —** paste the whole of `ESP.lua` in directly.
 
