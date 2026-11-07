@@ -1,0 +1,6 @@
+# test runner caches
+__pycache__/
+*.pyc
+
+# saved ESP settings (written by the script at runtime)
+esp_suite_config.json
