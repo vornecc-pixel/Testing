@@ -6,17 +6,42 @@ picker for every feature on every category.
 
 ```
 ESP.lua        the script — paste it into your executor and hit execute
+loader.lua     fetch-and-run wrapper that pulls ESP.lua from this repo
 tests/         headless test harness (mock Roblox API), not needed at runtime
 ```
 
 ## Quick start
 
-1. Paste the whole of `ESP.lua` into your executor.
-2. Execute. The menu opens automatically.
-3. **RightShift** toggles the menu (or click the small `ESP` pill).
+**Option A — one-liner from GitHub:**
+
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/vornecc-pixel/Testing/e834f10ad75ce60393a5bbe69cf62f5a180f4bfb/ESP.lua"))()
+```
+
+That URL is pinned to a commit, so it always loads the exact version that was
+tested. For whatever is on the branch head right now, swap the SHA for the
+branch name:
+
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/vornecc-pixel/Testing/arena/bc2a72bc-testing/ESP.lua"))()
+```
+
+**Option B — the loader script** (tries the pinned commit first, falls back to
+the branch, and rejects 404 pages instead of trying to run them):
+
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/vornecc-pixel/Testing/e834f10ad75ce60393a5bbe69cf62f5a180f4bfb/loader.lua"))()
+```
+
+**Option C —** paste the whole of `ESP.lua` in directly.
+
+Then:
+
+1. Execute. The menu opens automatically.
+2. **RightShift** toggles the menu (or click the small `ESP` pill).
    `RightControl` / `Delete` closes it.
 
-Re-executing the script unloads the previous copy first, so it never stacks.
+Re-executing unloads the previous copy first, so it never stacks.
 
 ## What's on screen
 
